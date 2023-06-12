@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { ReactComponent as logoImg } from "../../assets/icon/logo.svg";
+import { ReactComponent as LogoIcon } from "../../assets/icon/logo.svg";
 import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
@@ -36,7 +36,7 @@ const Section = styled.div`
   }
 `;
 
-const Logo = styled(logoImg)`
+const Logo = styled(LogoIcon)`
   width: 30px;
   margin-right: 12px;
   & path {
