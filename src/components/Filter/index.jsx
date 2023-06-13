@@ -23,7 +23,7 @@ const Filter = () => {
       <Dropdown
         dropdownRender={() => {
           return (
-            <MenuWrapper>
+            <MenuWrapper style={{ marginTop: "10px" }}>
               <h2 className="subTitle">Address</h2>
               <Section>
                 <Input ref={countryRef} placeholder={"Country"} />
