@@ -14,30 +14,6 @@ const Filter = () => {
   const minRef = useRef();
   const maxRef = useRef();
 
-  const menu = (
-    <MenuWrapper>
-      <h2 className="subTitle">Address</h2>
-      <Section>
-        <Input ref={countryRef} placeholder={"Country"} />
-        <Input ref={regionRef} placeholder={"Region"} />
-        <Input ref={cityRef} placeholder={"City"} />
-        <Input ref={zipRef} placeholder={"Zip code"} />
-      </Section>
-      <h2 className="subTitle">Appartment Info</h2>
-      <Section>
-        <Input ref={roomRef} placeholder={"Room"} />
-        <Input ref={sizeRef} placeholder={"Size"} />
-        <Input ref={sortRef} placeholder={"Sort"} />
-      </Section>
-
-      <h2 className="subTitle">Price</h2>
-      <Section style={{ marginBottom: "10px" }}>
-        <Input ref={minRef} placeholder={"Min price"} />
-        <Input ref={maxRef} placeholder={"Max price"} />
-      </Section>
-    </MenuWrapper>
-  );
-
   return (
     <Container>
       <Input
@@ -45,9 +21,33 @@ const Filter = () => {
         placeholder={"Enter an adress, neighborhood, city, or ZIP code"}
       />
       <Dropdown
-        overlay={menu}
+        dropdownRender={() => {
+          return (
+            <MenuWrapper>
+              <h2 className="subTitle">Address</h2>
+              <Section>
+                <Input ref={countryRef} placeholder={"Country"} />
+                <Input ref={regionRef} placeholder={"Region"} />
+                <Input ref={cityRef} placeholder={"City"} />
+                <Input ref={zipRef} placeholder={"Zip code"} />
+              </Section>
+              <h2 className="subTitle">Appartment Info</h2>
+              <Section>
+                <Input ref={roomRef} placeholder={"Room"} />
+                <Input ref={sizeRef} placeholder={"Size"} />
+                <Input ref={sortRef} placeholder={"Sort"} />
+              </Section>
+
+              <h2 className="subTitle">Price</h2>
+              <Section style={{ marginBottom: "10px" }}>
+                <Input ref={minRef} placeholder={"Min price"} />
+                <Input ref={maxRef} placeholder={"Max price"} />
+              </Section>
+            </MenuWrapper>
+          );
+        }}
         placement="bottomRight"
-        arrow={{ pointAtCenter: false }}
+        trigger={["click"]}
       >
         <div>
           {" "}

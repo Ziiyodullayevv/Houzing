@@ -31,6 +31,7 @@ const MenuWrapper = styled.div`
 
 const Section = styled.div`
   display: flex;
+  justify-content: start;
   gap: 1rem;
   margin-top: 10px;
   margin-bottom: 20px;

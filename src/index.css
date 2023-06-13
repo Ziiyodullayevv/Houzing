@@ -25,6 +25,11 @@ body {
   --padding: 0 130px;
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
 .title {
   font-family: "Montserrat";
   font-style: normal;
