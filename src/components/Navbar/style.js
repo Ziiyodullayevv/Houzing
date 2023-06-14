@@ -2,27 +2,19 @@ import { styled } from "styled-components";
 import { ReactComponent as logoImg } from "../../assets/icons/logo.svg";
 import { NavLink } from "react-router-dom";
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-const Main = styled.div`
-  display: flex;
-  justify-content: center;
+const Header = styled.header`
   background-color: var(--colorPrimary);
 `;
+
+const Main = styled.div``;
 
 const Wrapper = styled.div`
   justify-content: space-between;
   display: flex;
   align-items: center;
   color: #fff;
-  padding: var(--padding);
   height: 64px;
   font-size: 16px;
-  width: 100%;
 `;
 
 const Section = styled.div`
@@ -31,7 +23,7 @@ const Section = styled.div`
   cursor: ${({ logo }) => logo && "pointer"};
   transition: all 0.2s ease;
   .active {
-    color: red;
+    color: var(--backgroundPrimary);
   }
 `;
 
@@ -53,4 +45,4 @@ const Link = styled(NavLink)`
   }
 `;
 
-export { Container, Main, Wrapper, Section, Logo, Link };
+export { Header, Main, Wrapper, Section, Logo, Link };

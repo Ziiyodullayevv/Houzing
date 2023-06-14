@@ -3,10 +3,11 @@ import { ReactComponent as houses } from "../../assets/icons/houses.svg";
 import { ReactComponent as setting } from "../../assets/icons/setting.svg";
 import { ReactComponent as search } from "../../assets/icons/search.svg";
 
-const Container = styled.div`
+const Container = styled.div``;
+
+const Wrapper = styled.div`
   display: flex;
   gap: 20px;
-  padding: var(--padding);
   padding-top: 10px;
   padding-bottom: 10px;
 `;
@@ -37,4 +38,4 @@ const Section = styled.div`
   margin-bottom: 20px;
 `;
 
-export { Container, Icons, MenuWrapper, Section };
+export { Container, Wrapper, Icons, MenuWrapper, Section };
