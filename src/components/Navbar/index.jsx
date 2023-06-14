@@ -19,7 +19,7 @@ const Navbar = () => {
             </Section>
             {/* 2-part: Link list */}
             <Section>
-              {navbar.map(({ id, path, title, hidden }, index) => {
+              {navbar.map(({ path, title, hidden }, index) => {
                 return (
                   !hidden && (
                     <Link key={index} to={path}>

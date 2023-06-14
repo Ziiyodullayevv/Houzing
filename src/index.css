@@ -49,3 +49,12 @@ body {
 :where(.css-dev-only-do-not-override-12jzuas).ant-carousel .slick-dots-bottom {
   bottom: 30px;
 }
+
+.info {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  /* Text / Color */
+  color: #696969;
+}
