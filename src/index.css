@@ -8,6 +8,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  height: 4000px;
 }
 
 .container {
@@ -57,4 +58,24 @@ body {
   line-height: 20px;
   /* Text / Color */
   color: #696969;
+}
+
+.icon-style {
+  width: 40px;
+  height: 40px;
+  background-color: #f6f8f9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.icon-style:hover {
+  background-color: #dee1e3;
+}
+
+.icon-style:active {
+  transform: scale(0.9);
 }
