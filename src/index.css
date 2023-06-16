@@ -79,3 +79,9 @@ body {
 .icon-style:active {
   transform: scale(0.9);
 }
+
+.inline {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
