@@ -3,10 +3,11 @@ import { Input, Button } from "../Generic";
 import { Container, Icons, MenuWrapper, Section, Wrapper } from "./style";
 import { Dropdown } from "antd";
 import { replace } from "../../hooks/useReplace";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import useSearch from "../../hooks/useSearch";
 
 const Filter = () => {
-  const navigate = useNavigate();
+  //refs:
   const countryRef = useRef();
   const regionRef = useRef();
   const cityRef = useRef();
@@ -17,11 +18,15 @@ const Filter = () => {
   const minRef = useRef();
   const maxRef = useRef();
 
-  console.log(replace("address", "toshkent"));
+  //paths:
+  const navigate = useNavigate();
+  const location = useLocation();
+  const query = useSearch();
+  // console.log(query.get("region"), "params");
 
+  // page paths:
   const onChange = ({ target: { name, value } }) => {
-    // console.log(name, value);
-    navigate(`/properties${replace(name, value)}`);
+    navigate(`${location.pathname}${replace(name, value)}`);
   };
 
   return (
@@ -39,6 +44,7 @@ const Filter = () => {
                 <Section>
                   <Input
                     onChange={onChange}
+                    defaultValue={query.get("country")}
                     ref={countryRef}
                     name={"country"}
                     placeholder={"Country"}
@@ -47,17 +53,20 @@ const Filter = () => {
                     onChange={onChange}
                     ref={regionRef}
                     name={"region"}
+                    defaultValue={query.get("region")}
                     placeholder={"Region"}
                   />
                   <Input
                     onChange={onChange}
                     ref={cityRef}
+                    defaultValue={query.get("city")}
                     name="city"
                     placeholder={"City"}
                   />
                   <Input
                     onChange={onChange}
                     ref={zipRef}
+                    defaultValue={query.get("zip_code")}
                     name="zip_code"
                     placeholder={"Zip code"}
                   />
