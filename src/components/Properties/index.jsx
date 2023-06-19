@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container } from "./style";
 import HouseCard from "../HouseCard";
 import { useLocation } from "react-router-dom";
-const { REACT_APP_BASE_URL: url } = process.env;
+const { REACT_APP_BASE_URL: url } = process.env; // env faylida yashirilgan url olish uchun
 
 const Properties = () => {
   const [data, setData] = useState([]);
