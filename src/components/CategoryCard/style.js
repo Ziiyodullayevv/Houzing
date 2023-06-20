@@ -6,17 +6,33 @@ import { ReactComponent as ruler } from "../../assets/icons/ruler.svg";
 import { ReactComponent as love } from "../../assets/icons/love.svg";
 import { ReactComponent as resize } from "../../assets/icons/resize.svg";
 
+const Blur = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.3);
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+`;
+
 const Container = styled.div`
+  position: relative;
   overflow: hidden;
-  width: 100%;
-  max-width: 380px;
-  min-width: 330px;
+  max-width: 280px;
+  min-width: 230px;
   border-radius: 4px;
-  height: auto;
+  max-height: 380px;
+  min-height: 350px;
   border: 1px solid #e6e9ec;
   background-color: white;
-  transition: all 0.1s ease-in;
-  &:hover {
+  transition: all 0.1s linear;
+  &:hover ${Blur} {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
     filter: drop-shadow(0px 20px 38px rgba(0, 0, 0, 0.06))
       drop-shadow(0px 7px 46px rgba(0, 0, 0, 0.06))
       drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.06));
@@ -25,27 +41,25 @@ const Container = styled.div`
 
 const Img = styled.img`
   width: 100%;
-  height: 220px;
-  min-height: 200px;
+  height: 380px;
+  max-height: 380px;
+  min-height: 350px;
 `;
 
 const Content = styled.div`
-  padding: 20px 20px 0;
-`;
-
-const Details = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 14px 0 8px;
-`;
-
-Details.Item = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   justify-content: center;
-  gap: 0.5rem;
+  align-items: center;
+  color: white;
+  line-height: 28px;
+  z-index: 2;
+  font-size: 18px;
+  font-weight: 600;
 `;
 
 const Icons = styled.div``;
@@ -62,10 +76,4 @@ Icons.Resize = styled(resize)`
   height: 15px;
 `;
 
-const Footer = styled.div`
-  margin-top: 16px;
-  border-top: 1px solid #e6e9ec;
-  padding: 0 20px;
-`;
-
-export { Container, Img, Content, Details, Icons, Footer };
+export { Container, Img, Content, Icons, Blur };
