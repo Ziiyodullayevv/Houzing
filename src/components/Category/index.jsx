@@ -13,7 +13,6 @@ const Category = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 3,
-    centerMode: true,
   };
 
   // const navigate = useNavigate();

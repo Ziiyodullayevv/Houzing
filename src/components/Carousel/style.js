@@ -28,6 +28,9 @@ const Arrow = styled(arrow)`
   &:hover {
     background-color: rgba(255, 255, 255, 0.4);
   }
+  &:active {
+    transform: scale(0.9);
+  }
 `;
 
 const Blur = styled.div`
