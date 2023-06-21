@@ -1,11 +1,9 @@
 import { styled } from "styled-components";
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   gap: 1rem;
-  flex-wrap: wrap;
 `;
 
 export { Container };

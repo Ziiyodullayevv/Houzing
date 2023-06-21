@@ -59,9 +59,9 @@ const Filter = () => {
                   <Input
                     onChange={onChange}
                     ref={cityRef}
-                    defaultValue={query.get("city")}
-                    name="city"
-                    placeholder={"City"}
+                    defaultValue={query.get("address")}
+                    name="address"
+                    placeholder={"Address"}
                   />
                   <Input
                     onChange={onChange}
