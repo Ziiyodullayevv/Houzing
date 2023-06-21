@@ -85,3 +85,12 @@ body {
   overflow: hidden;
   white-space: nowrap;
 }
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 30px !important;
+  color: black;
+  position: relative;
+  left: -10px;
+  right: 30px;
+}

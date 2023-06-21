@@ -7,8 +7,8 @@ import Category from "../Category";
 const Home = () => {
   return (
     <Container>
-      <GenCarousel />
-      <HouseCard />
+      {/* <GenCarousel />
+      <HouseCard /> */}
       <Category />
     </Container>
   );

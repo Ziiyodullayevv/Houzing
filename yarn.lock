@@ -2965,6 +2965,11 @@ async-validator@^4.1.0:
   resolved "https://registry.yarnpkg.com/async-validator/-/async-validator-4.2.5.tgz#c96ea3332a521699d0afaaceed510a54656c6339"
   integrity sha512-7HhHjtERjqlNbZtqNqy2rckN/SpOOlmDliet+lP7k+eKZEjPk3DgyeU9lIXLdeLz0uBbbVp+9Qdow9wJWgwwfg==
 
+async@^0.9.0:
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/async/-/async-0.9.2.tgz#aea74d5e61c1f899613bf64bda66d4c78f2fd17d"
+  integrity sha512-l6ToIJIotphWahxxHyzK9bnLR6kM4jJIIgLShZeqLY7iboHoGkdgFl7W2/Ivi4SkMJYGKqW8vSuk0uKUj6qsSw==
+
 async@^3.2.3:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/async/-/async-3.2.4.tgz#2d22e00f8cddeb5fde5dd33522b56d1cf569a81c"
@@ -3296,6 +3301,13 @@ bytes@3.1.2:
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.2.tgz#8b0beeb98605adf1b128fa4386403c009e0221a5"
   integrity sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==
 
+cache@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/cache/-/cache-3.0.0.tgz#1c5857e874f7064be641114a605c7e2ae8a80880"
+  integrity sha512-sNoM5jithfalxIceo/uFFm5bOlGjux2y8jEvjNb0F/cACWQaMmWuEPTLl6GzLHdFcNsbWBBdqkBd9NyefZ5UQQ==
+  dependencies:
+    ds "^1.4.2"
+
 call-bind@^1.0.0, call-bind@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.2.tgz#b1d4e89e688119c3c9a903ad30abb2f6a919be3c"
@@ -3438,6 +3450,16 @@ clean-css@^5.2.2:
   integrity sha512-JVJbM+f3d3Q704rF4bqQ5UUyTtuJ0JRKNbTKVEeujCCBoMdkEi+V+e8oktO9qGQNSvHrFTM6JZRXrUvGR1czww==
   dependencies:
     source-map "~0.6.0"
+
+clean@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/clean/-/clean-4.0.2.tgz#c9f016f70a27cc1f1a39fca95b504047e4b6f153"
+  integrity sha512-2LGVh4dNtI16L4UzqDHO6Hbl74YjG1vWvEUU78dgLO4kuyqJZFMNMPBx+EGtYKTFb14e24p+gWXgkabqxc1EUw==
+  dependencies:
+    async "^0.9.0"
+    minimist "^1.1.0"
+    mix2 "^1.0.0"
+    skema "^1.0.0"
 
 cliui@^7.0.2:
   version "7.0.4"
@@ -4172,6 +4194,11 @@ dotenv@^10.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-10.0.0.tgz#3d4227b8fb95f81096cdd2b66653fb2c7085ba81"
   integrity sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==
 
+ds@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/ds/-/ds-1.4.2.tgz#0857aa213790a4fb3abb365b9cec0e9ba8569393"
+  integrity sha512-d5nMCjfod+srvE/1Bnt/u+L++6N8KJx3ZAi95AGp0g6RtfuGDNlGciWL/iiwKHsFVBVnA3/HEFUq5SW1NgTQ3Q==
+
 duplexer@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.2.tgz#3abe43aef3835f8ae077d136ddce0f276b0400e6"
@@ -4231,6 +4258,11 @@ enhanced-resolve@^5.14.1:
   dependencies:
     graceful-fs "^4.2.4"
     tapable "^2.2.0"
+
+enquire.js@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/enquire.js/-/enquire.js-2.1.6.tgz#3e8780c9b8b835084c3f60e166dbc3c2a3c89814"
+  integrity sha512-/KujNpO+PT63F7Hlpu4h3pE3TokKRHN26JYmQpPyjkRD/N57R7bPDNojMXdi7uveAKjYB7yQnartCxZnFWr0Xw==
 
 entities@^2.0.0:
   version "2.2.0"
@@ -6598,6 +6630,11 @@ magic-string@^0.25.0, magic-string@^0.25.7:
   dependencies:
     sourcemap-codec "^1.4.8"
 
+make-array@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/make-array/-/make-array-0.1.2.tgz#335e36ebb0c5a43154d21213a1ecaeae2a1bb3ef"
+  integrity sha512-bcFmxgZ+OTaMYJp/w6eifElKTcfum7Gi5H7vQ8KzAf9X6swdxkVuilCaG3ZjXr/qJsQT4JJ2Rq9SDYScWEdu9Q==
+
 make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"
@@ -6736,10 +6773,15 @@ minimatch@^5.0.1:
   dependencies:
     brace-expansion "^2.0.1"
 
-minimist@^1.2.0, minimist@^1.2.6:
+minimist@^1.1.0, minimist@^1.2.0, minimist@^1.2.6:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
   integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
+
+mix2@^1.0.0:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/mix2/-/mix2-1.0.5.tgz#60111096cd7e9a059257ab142de2f8837547ff65"
+  integrity sha512-ybWz7nY+WHBBIyliND5eYaJKzkoa+qXRYNTmVqAxSLlFtL/umT2iv+pmyTu1oU7WNkrirwheqR8d9EaKVz0e5g==
 
 mkdirp@~0.5.1:
   version "0.5.6"
@@ -8422,6 +8464,17 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-slick@^0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.29.0.tgz#0bed5ea42bf75a23d40c0259b828ed27627b51bb"
+  integrity sha512-TGdOKE+ZkJHHeC4aaoH85m8RnFyWqdqRfAGkhd6dirmATXMZWAxOpTLmw2Ll/jPTQ3eEG7ercFr/sbzdeYCJXA==
+  dependencies:
+    classnames "^2.2.5"
+    enquire.js "^2.1.6"
+    json2mq "^0.2.0"
+    lodash.debounce "^4.0.8"
+    resize-observer-polyfill "^1.5.0"
+
 react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
@@ -8573,7 +8626,7 @@ requires-port@^1.0.0:
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
 
-resize-observer-polyfill@^1.5.1:
+resize-observer-polyfill@^1.5.0, resize-observer-polyfill@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
   integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
@@ -8915,6 +8968,15 @@ sisteransi@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
+
+skema@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/skema/-/skema-1.0.2.tgz#37121cfea1caec31072d956585748c9b119fc453"
+  integrity sha512-5LWfF2RSW2B3xfOaY6j49X8aNwsnj9cRVrM5QMF7it+cZvpv5ufiOUT13ps2U52sIbAzs11bdRP6mi5qyg75VQ==
+  dependencies:
+    async "^0.9.0"
+    make-array "^0.1.2"
+    mix2 "^1.0.0"
 
 slash@^2.0.0:
   version "2.0.0"

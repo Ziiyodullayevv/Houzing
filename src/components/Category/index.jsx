@@ -1,46 +1,54 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Arrow, Blur, Container, Img, Title } from "./style";
-import { Carousel } from "antd";
-import image1 from "../../assets/img/house1.png";
-import image2 from "../../assets/img/house2.png";
+import React, { useState, useEffect } from "react";
+import { Container } from "./style";
+import Slider from "react-slick";
+import CategoryCard from "../CategoryCard";
+import { useNavigate } from "react-router-dom";
 const { REACT_APP_BASE_URL: url } = process.env; // env faylida yashirilgan url olish uchun
 
 const Category = () => {
-  const slider = useRef();
-
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch(`${url}/houses/list`)
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res?.data || []);
-      });
-  }, []);
-  console.log(data);
-  const onMove = ({
-    target: {
-      dataset: { name },
-    },
-  }) => {
-    if (name === "right") slider.current.next();
-    if (name === "left") slider.current.prev();
+  const settings = {
+    className: "center",
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 3,
+    centerMode: true,
   };
+
+  // const navigate = useNavigate();
+
+  // const [data, setData] = useState([]);
+  // useEffect(() => {
+  //   fetch(`${url}/category/list`)
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       setData(res?.data || []);
+  //     });
+  // }, []);
+
   return (
-    <Container>
-      <Carousel autoplay ref={slider} effect="fade">
-        <Img src={image1} />
-        <Img src={image2} />
-        <Img src={image1} />
-        <Img src={image2} />
-      </Carousel>
-      <Blur />
-      <Title>
-        <Title.Heading>Skyper Pool Partment</Title.Heading>
-        <Title.SubTitle>how are you</Title.SubTitle>
-        <Title.Price>2500$/month</Title.Price>
-      </Title>
-      <Arrow data-name={"left"} onClick={onMove} />
-      <Arrow data-name={"right"} onClick={onMove} left="true" />
+    <Container className="container">
+      <Slider {...settings}>
+        {/* {data.map((value) => {
+          return (
+            <CategoryCard
+              onClick={() => navigate(`/properties?category=${value?.name}`)}
+              data={value}
+            />
+          );
+        })} */}
+
+        {/* bu qism olib tashlanadi */}
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+        <CategoryCard />
+      </Slider>
     </Container>
   );
 };
