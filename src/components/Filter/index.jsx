@@ -1,31 +1,64 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Input, Button } from "../Generic";
-import { Container, Icons, MenuWrapper, Section, Wrapper } from "./style";
+import {
+  Container,
+  Icons,
+  MenuWrapper,
+  Section,
+  SelectAntd,
+  Wrapper,
+} from "./style";
 import { Dropdown } from "antd";
 import { replace } from "../../hooks/useReplace";
 import { useNavigate, useLocation } from "react-router-dom";
 import useSearch from "../../hooks/useSearch";
 
 const Filter = () => {
+  const [data, setData] = useState([]);
+  const [filter, setFilter] = useState("All");
+
+  // selectga name biriktirish uchun:
+  useEffect(() => {
+    if (query.get("category_id")) {
+      let res = data.fitler(
+        (category) => category.id == query.get("category_id")
+      );
+      setFilter(res?.name);
+    }
+  });
+
+  // selectni map qilish uchun:
+  useEffect(() => {
+    fetch(`${url}/category/list`)
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res?.data || []);
+      });
+  }, []);
+
+  const onChange = (category_id) => {
+    navigate(`/properties/${replace("category_id", category_id)}`);
+  };
+
   //refs:
   const countryRef = useRef();
   const regionRef = useRef();
   const cityRef = useRef();
   const zipRef = useRef();
   const roomRef = useRef();
-  const sizeRef = useRef();
   const sortRef = useRef();
   const minRef = useRef();
   const maxRef = useRef();
 
   //paths:
+  const { REACT_APP_BASE_URL: url } = process.env; // env faylida yashirilgan url olish uchun
   const navigate = useNavigate();
   const location = useLocation();
   const query = useSearch();
   // console.log(query.get("region"), "params");
 
-  // page paths:
-  const onChange = ({ target: { name, value } }) => {
+  // categories filter :
+  const categoriesFilter = ({ target: { name, value } }) => {
     navigate(`${location.pathname}${replace(name, value)}`);
   };
 
@@ -74,8 +107,25 @@ const Filter = () => {
                 <h2 className="subTitle">Appartment Info</h2>
                 <Section>
                   <Input ref={roomRef} placeholder={"Room"} />
-                  <Input ref={sizeRef} placeholder={"Size"} />
-                  <Input ref={sortRef} placeholder={"Sort"} />
+                  <Input ref={sortRef} onC placeholder={"Sort"} />
+
+                  {/* Select orqali categorydagi malumotlar chiqarildi: */}
+                  <SelectAntd
+                    defaultValue={query.get("category_id") || "All"}
+                    name=""
+                    id=""
+                  >
+                    {/* {data.map((value) => {
+                      return (
+                        <SelectAntd.Option onChange={categoriesFilter} value={value?.id || "Test"}>
+                          {value?.name || "Category"}
+                        </SelectAntd.Option>
+                      );
+                    })} */}
+                    <SelectAntd.Option value={"Hello"}>hello</SelectAntd.Option>
+                    <SelectAntd.Option value={"Hello"}>hello</SelectAntd.Option>
+                    <SelectAntd.Option value={"Hello"}>hello</SelectAntd.Option>
+                  </SelectAntd>
                 </Section>
 
                 <h2 className="subTitle">Price</h2>
