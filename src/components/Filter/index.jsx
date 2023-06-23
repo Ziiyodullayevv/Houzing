@@ -14,31 +14,44 @@ import { useNavigate, useLocation } from "react-router-dom";
 import useSearch from "../../hooks/useSearch";
 
 const Filter = () => {
+  //paths:
+  const { REACT_APP_BASE_URL: url } = process.env; // env faylida yashirilgan url olish uchun
+  const navigate = useNavigate();
+  const location = useLocation();
+  const query = useSearch();
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState("All");
-
-  // selectga name biriktirish uchun:
-  useEffect(() => {
-    if (query.get("category_id")) {
-      let res = data.fitler(
-        (category) => category.id == query.get("category_id")
-      );
-      setFilter(res?.name);
-    }
-  });
+  // console.log(query.get("region"), "params")
 
   // selectni map qilish uchun:
-  useEffect(() => {
-    fetch(`${url}/category/list`)
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res?.data || []);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${url}/category/list`)
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       setData(res?.data || []);
+  //       // eslint-disable-next-line react-hooks/exhaustive-deps
+  //     });
+  // }, []);
 
-  const onChange = (category_id) => {
-    navigate(`/properties/${replace("category_id", category_id)}`);
-  };
+  // selectga name biriktirish uchun:
+  // useEffect(() => {
+  //   let [select] = data?.fitler(
+  //     (category) => category.id === Number(query.get("category_id"))
+  //   );
+  //   select?.name && setFilter(select?.name);
+  //   !query.get("category_id") && setFilter("Select Category");
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [location?.search, data]);
+
+  // // categories filter:
+  // const categoriesFilter = (category_id) => {
+  //   navigate(`/properties/${replace("category_id", category_id)}`);
+  // };
+
+  // // sort filter:
+  // const sortFilter = (sort) => {
+  //   navigate(`/properties/${replace("sort", sort)}`);
+  // };
 
   //refs:
   const countryRef = useRef();
@@ -46,19 +59,10 @@ const Filter = () => {
   const cityRef = useRef();
   const zipRef = useRef();
   const roomRef = useRef();
-  const sortRef = useRef();
   const minRef = useRef();
   const maxRef = useRef();
 
-  //paths:
-  const { REACT_APP_BASE_URL: url } = process.env; // env faylida yashirilgan url olish uchun
-  const navigate = useNavigate();
-  const location = useLocation();
-  const query = useSearch();
-  // console.log(query.get("region"), "params");
-
-  // categories filter :
-  const categoriesFilter = ({ target: { name, value } }) => {
+  const onChange = ({ target: { name, value } }) => {
     navigate(`${location.pathname}${replace(name, value)}`);
   };
 
@@ -107,14 +111,18 @@ const Filter = () => {
                 <h2 className="subTitle">Appartment Info</h2>
                 <Section>
                   <Input ref={roomRef} placeholder={"Room"} />
-                  <Input ref={sortRef} onC placeholder={"Sort"} />
+
+                  <SelectAntd defaultValue={"Select Sort"}>
+                    <SelectAntd.Option value={""}>DeSelect</SelectAntd.Option>
+                    <SelectAntd.Option value={"asc"}>Osuvchi</SelectAntd.Option>
+                    <SelectAntd.Option value={"desc"}>
+                      Kamayuvchi
+                    </SelectAntd.Option>
+                  </SelectAntd>
 
                   {/* Select orqali categorydagi malumotlar chiqarildi: */}
-                  <SelectAntd
-                    defaultValue={query.get("category_id") || "All"}
-                    name=""
-                    id=""
-                  >
+                  <SelectAntd value={filter}>
+                    <SelectAntd.Option value={""}>Default</SelectAntd.Option>
                     {/* {data.map((value) => {
                       return (
                         <SelectAntd.Option onChange={categoriesFilter} value={value?.id || "Test"}>
@@ -130,8 +138,18 @@ const Filter = () => {
 
                 <h2 className="subTitle">Price</h2>
                 <Section style={{ marginBottom: "10px" }}>
-                  <Input ref={minRef} placeholder={"Min price"} />
-                  <Input ref={maxRef} placeholder={"Max price"} />
+                  <Input
+                    onChange={onChange}
+                    ref={minRef}
+                    name="min_price"
+                    placeholder={"Min price"}
+                  />
+                  <Input
+                    onChange={onChange}
+                    ref={maxRef}
+                    name="max_price"
+                    placeholder={"Max price"}
+                  />
                 </Section>
               </MenuWrapper>
             );
