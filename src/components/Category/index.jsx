@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container } from "./style";
+import { Container, Content } from "./style";
 import Slider from "react-slick";
 import CategoryCard from "../CategoryCard";
 import { useNavigate } from "react-router-dom";
@@ -28,6 +28,12 @@ const Category = () => {
 
   return (
     <Container className="container">
+      <Content>
+        <h2 className="title">Category</h2>
+        <h4 className="info">
+          Nulla quis curabitur velit volotput auctor bibendium consectitur sit.
+        </h4>
+      </Content>
       <Slider {...settings}>
         {/* {data.map((value) => {
           return (

@@ -4,6 +4,7 @@ import { Wrapper, Section, Logo, Link, Main, Header } from "./style";
 import { navbar } from "../../utils/navbar";
 import { Button } from "../Generic";
 import Filter from "../Filter";
+import Footer from "../Footer";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -44,6 +45,7 @@ const Navbar = () => {
       </Header>
       <Filter />
       <Outlet />
+      <Footer />
     </>
   );
 };
