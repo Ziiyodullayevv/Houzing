@@ -33,7 +33,7 @@ const Recomended = () => {
       </Content>
       <Slider {...settings}>
         {data.map((value) => {
-          return <HouseCard data={value} />;
+          return <HouseCard key={value?.id} data={value} />;
         })}
       </Slider>
     </Container>

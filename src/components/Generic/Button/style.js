@@ -23,13 +23,19 @@ const getType = ({ type }) => {
   }
 };
 
+const getWidth = ({ width }) => {
+  if (!width) return "130px";
+  else if (`${width}`.includes("%")) return "100%";
+  else return `${width}px`;
+};
+
 const Container = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 2px;
   height: ${({ height }) => (height ? `${height}px` : "44px")};
-  width: ${({ width }) => (width ? `${width}px` : "130px")};
+  width: ${getWidth};
   font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : "14px")};
   min-width: 120px;
   cursor: pointer;

@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Content, Details, Footer, Icons, Img } from "./style";
 import noimg from "../../assets/img/noimg.jpeg";
 
-const HouseCard = ({ data = {} }) => {
+const HouseCard = ({ data = {}, onClick }) => {
   const {
     address,
     city,
@@ -16,7 +16,7 @@ const HouseCard = ({ data = {} }) => {
   } = data;
   console.log(data);
   return (
-    <Container>
+    <Container onClick={onClick}>
       <Img src={attachments?.[0].imgPath || noimg} />
       <Content>
         <div className="subTitle inline">
