@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Content } from "./style";
 import Slider from "react-slick";
 import HouseCard from "../HouseCard";
+import { useNavigate } from "react-router-dom";
 const { REACT_APP_BASE_URL: url } = process.env; // env faylida yashirilgan url olish uchun
 
 const Recent = () => {
@@ -23,6 +24,8 @@ const Recent = () => {
       });
   }, []);
 
+  const navigate = useNavigate();
+
   return (
     <Container className="container">
       <Content>
@@ -33,7 +36,13 @@ const Recent = () => {
       </Content>
       <Slider {...settings}>
         {data.map((value) => {
-          return <HouseCard key={value?.id} data={value} />;
+          return (
+            <HouseCard
+              key={value?.id}
+              data={value}
+              onClick={() => navigate(`/properties/${value.id}`)}
+            />
+          );
         })}
       </Slider>
     </Container>
