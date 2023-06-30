@@ -3,6 +3,7 @@ import useUniqueId from "../hooks/useId";
 
 // pages:
 import SignInPage from "../pages/SignIn";
+import { Slider } from "antd";
 
 // React.lazy pages:
 const HomePage = React.lazy(() => import("../pages/Home"));
@@ -15,7 +16,13 @@ export const navbar = [
     title: "Home",
     path: "/home",
     element: (
-      <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
+      <React.Suspense
+        fallback={
+          <React.Fragment>
+            <Slider />
+          </React.Fragment>
+        }
+      >
         <HomePage />
       </React.Suspense>
     ),
@@ -27,7 +34,13 @@ export const navbar = [
     title: "Properties",
     path: "/properties",
     element: (
-      <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
+      <React.Suspense
+        fallback={
+          <React.Fragment>
+            <Slider />
+          </React.Fragment>
+        }
+      >
         <PropertiesPage />
       </React.Suspense>
     ),
@@ -39,7 +52,13 @@ export const navbar = [
     title: "Single House",
     path: "/properties/:id",
     element: (
-      <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
+      <React.Suspense
+        fallback={
+          <React.Fragment>
+            <Slider />
+          </React.Fragment>
+        }
+      >
         <HouseItemPage />
       </React.Suspense>
     ),
