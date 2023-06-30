@@ -1,10 +1,11 @@
 import React from "react";
 import useUniqueId from "../hooks/useId";
-
-// pages:
-import SignInPage from "../pages/SignIn";
 import { Slider } from "antd";
 
+// pages:
+import SignInPage from "../pages/Register";
+import Favourite from "../pages/Favourite";
+import Signin from "../components/SignIn";
 // React.lazy pages:
 const HomePage = React.lazy(() => import("../pages/Home"));
 const PropertiesPage = React.lazy(() => import("../pages/Properties"));
@@ -75,9 +76,17 @@ export const navbar = [
   },
   {
     id: useUniqueId,
+    title: "Favourite",
+    path: "/favourite",
+    element: <Favourite />,
+    private: true,
+    hidden: true,
+  },
+  {
+    id: useUniqueId,
     title: "Sign Up",
     path: "/signup",
-    element: <h1>Sign Up</h1>,
+    element: <Signin />,
     private: false,
     hidden: true,
   },

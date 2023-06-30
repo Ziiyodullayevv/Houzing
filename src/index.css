@@ -71,6 +71,19 @@ body {
   transition: all 0.1s ease;
 }
 
+.icon-style-2 {
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  fill: white;
+}
+
 .icon-style:hover {
   background-color: #dee1e3;
 }

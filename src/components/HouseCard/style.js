@@ -56,6 +56,9 @@ Icons.Ruler = styled(ruler)``;
 Icons.Love = styled(love)`
   width: 15px;
   height: 15px;
+  & path {
+    fill: ${({ favourite }) => (favourite ? "red" : "gray")};
+  }
 `;
 Icons.Resize = styled(resize)`
   width: 15px;

@@ -45,4 +45,27 @@ const Link = styled(NavLink)`
   }
 `;
 
-export { Header, Main, Wrapper, Section, Logo, Link };
+const Menu = styled.div`
+  border: 1px rgba(0, 0, 0, 0.4) solid;
+  width: 177px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding: 16px;
+  gap: 16px;
+  border-radius: 5px;
+  box-shadow: 0px 20px 38px rgba(0, 0, 0, 0.06),
+    0px 7px 46px rgba(0, 0, 0, 0.06), 0px 8px 15px rgba(0, 0, 0, 0.06);
+`;
+
+Menu.Item = styled.div`
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+  color: #000000;
+`;
+
+export { Menu, Header, Main, Wrapper, Section, Logo, Link };

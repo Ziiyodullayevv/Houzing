@@ -230,8 +230,11 @@ export const HouseItem = () => {
               </Container>
             </Section>
           </Section>
+          <div style={{ marginTop: "30px" }}>
+            <Yandex />
+          </div>
         </Container>
-        <Container className="user" flex={1}>
+        <Container style={{ alignItems: "start" }} className="user" flex={1}>
           <Section style={{ justifyContent: "flex-start" }}>
             <User.Img src={nouser} alt="user image" />
             <Content>
@@ -247,7 +250,6 @@ export const HouseItem = () => {
           <Button width={"%"}>Send request</Button>
         </Container>
       </Wrapper>
-      <Yandex />
       <Recent />
     </React.Fragment>
   );
