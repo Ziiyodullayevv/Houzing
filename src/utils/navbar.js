@@ -6,6 +6,9 @@ import { Slider } from "antd";
 import SignInPage from "../pages/Register";
 import Favourite from "../pages/Favourite";
 import Signin from "../components/SignIn";
+import MyProfilePage from "../pages/MyPofile";
+import AddNewHouse from "../components/AddHouse";
+
 // React.lazy pages:
 const HomePage = React.lazy(() => import("../pages/Home"));
 const PropertiesPage = React.lazy(() => import("../pages/Properties"));
@@ -80,6 +83,30 @@ export const navbar = [
     path: "/favourite",
     element: <Favourite />,
     private: true,
+    hidden: true,
+  },
+  {
+    id: useUniqueId,
+    title: "My profile",
+    path: "/myprofile",
+    element: <MyProfilePage />,
+    private: true,
+    hidden: true,
+  },
+  {
+    id: useUniqueId,
+    title: "Add New Hosue",
+    path: "myprofile/newhouse",
+    element: <AddNewHouse />,
+    private: true,
+    hidden: true,
+  },
+  {
+    id: useUniqueId,
+    title: "Sign Up",
+    path: "/signup",
+    element: <Signin />,
+    private: false,
     hidden: true,
   },
   {
