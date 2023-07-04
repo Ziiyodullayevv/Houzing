@@ -9,7 +9,7 @@ import { ReactComponent as resize } from "../../assets/icons/resize.svg";
 const Container = styled.div`
   overflow: hidden;
   width: 100%;
-  max-width: 380px;
+  max-width: 340px;
   min-width: 330px;
   border-radius: 4px;
   height: auto;
@@ -25,7 +25,7 @@ const Container = styled.div`
 
 const Img = styled.img`
   width: 100%;
-  height: 220px;
+  height: 200px;
   min-height: 200px;
 `;
 

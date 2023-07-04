@@ -8,6 +8,7 @@ import { PropertiesContext } from "../../context/properties";
 const HouseCard = ({ data = {}, onClick }) => {
   const [state] = useContext(PropertiesContext);
   const {
+    name,
     attachments,
     salePrice,
     price,
@@ -38,8 +39,8 @@ const HouseCard = ({ data = {}, onClick }) => {
     )
       .then((res) => res.json())
       .then((res) => {
-        if (favorite) res?.success && message.warning("Successfully disliked");
-        else res?.success && message.info("Successfully liked");
+        if (favorite) res?.success && message.warning("Disliked");
+        else res?.success && message.info("Liked");
         state.refetch && state.refetch();
       });
   };
@@ -47,15 +48,15 @@ const HouseCard = ({ data = {}, onClick }) => {
   let toggleStyle = toggle ? "icon-style-2" : "icon-style";
 
   return (
-    <Container onClick={onClick}>
+    <Container>
       <Img src={attachments?.[0].imgPath || noimg} />
       <Content>
         <div className="subTitle inline">
-          {city} {country} {description}
+          {name || "House Name Not"} & {category?.name || "Category"}
         </div>
-        <div className="info">
-          {address || "Quincy St, Brooklyn, NY, USA"}
-          {category?.name || " Category"} {houseDetails?.room || 0} rooms
+        <div className="info-card">
+          {country || "Quincy St, Brooklyn, NY, USA"} {city || "City Name"}{" "}
+          {houseDetails?.room || 0} rooms
         </div>
         <Details>
           <Details.Item>
@@ -86,11 +87,11 @@ const HouseCard = ({ data = {}, onClick }) => {
             <div className="subTitle">${salePrice || 0}/mo</div>
           </Details.Item>
           <Details style={{ gap: "1rem" }}>
-            <div className="icon-style">
+            <div onClick={onClick} className="icon-style">
               <Icons.Resize />
             </div>
-            <div className={`${toggleStyle}`}>
-              <Icons.Love onClick={save} favorite={favorite} />
+            <div onClick={save} className={`${toggleStyle}`}>
+              <Icons.Love favorite={favorite} />
             </div>
           </Details>
         </Details>

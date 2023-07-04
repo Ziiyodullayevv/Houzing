@@ -1,7 +1,6 @@
 import { Checkbox } from "antd";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useRequest from "../../hooks/useRequest";
 import { Input, Button } from "../Generic";
 import Recent from "../Recent";
 import nouser from "../../assets/img/nouser.jpeg";
@@ -21,18 +20,13 @@ import {
   Wrapper,
 } from "./style";
 import { Yandex } from "../Generic/Yandex";
-// const { REACT_APP_BASE_URL: url } = process.env;
 
 export const HouseItem = () => {
   const [data, setData] = useState({});
   const params = useParams();
-  // const request = useRequest();
 
   useEffect(() => {
-    // request({ url: `/houses/list/${params?.id}` }).then((res) =>
-    //   setData(res?.data || [])
-    // );
-    fetch(`https://houzing-app.herokuapp.com/api/v1/houses/id/${params?.id}`)
+    fetch(`http://localhost:8080/api/v1/houses/id/${params?.id}`)
       .then((res) => res.json())
       .then((res) => {
         setData(res?.data);
@@ -40,39 +34,64 @@ export const HouseItem = () => {
       });
   }, [params?.id]);
 
-  console.log(data, "daatat");
-
-  // const [firstImg] = data?.attachments;
   return (
     <React.Fragment>
       <ImageContainer>
-        <ImageContainer.Main
-          src={(data?.attachments && data?.attachments[0]?.imgPath) || noimg}
-          alt="test"
-        />
-        <ImgContainer>
-          {data?.attachments &&
-            data?.attachments?.slice(1, 5).map((value, index) => {
-              return data?.attachments?.length > 5 && index === 3 ? (
-                <Blur.Container>
-                  <ImageContainer.Subimg
-                    key={value.id}
-                    src={value?.imgPath}
-                    alt="test"
-                  />
-                  <Blur>+{data?.attachments?.length - 5}</Blur>
-                </Blur.Container>
-              ) : (
-                <ImageContainer.Subimg
-                  key={value.id}
-                  src={value?.imgPath}
-                  alt="test"
-                />
-              );
-            })}
-        </ImgContainer>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            gap: "20px",
+          }}
+        >
+          {/* asosiy image */}
+          <div>
+            <ImageContainer.Main
+              src={
+                (data?.attachments && data?.attachments[0]?.imgPath) || noimg
+              }
+              alt="test"
+            />
+          </div>
+
+          {/* 4ta image uchun container */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "250px 250px",
+              gridTemplateRows: "150px 150px",
+              gap: "20px",
+            }}
+          >
+            {data?.attachments &&
+              data?.attachments?.slice(1, 5).map((value, index) => {
+                return data?.attachments?.length > 5 && index === 3 ? (
+                  <Blur.Container>
+                    <div>
+                      <ImageContainer.Subimg
+                        key={value.id}
+                        src={value?.imgPath}
+                        alt="test"
+                      />
+                    </div>
+                    <Blur>+{data?.attachments?.length - 5}</Blur>
+                  </Blur.Container>
+                ) : (
+                  <div>
+                    <ImageContainer.Subimg
+                      key={value.id}
+                      src={value?.imgPath}
+                      alt="test"
+                    />
+                  </div>
+                );
+              })}
+          </div>
+        </div>
       </ImageContainer>
-      <Wrapper>
+
+      {/* body part */}
+      <Wrapper className="container">
         <Container flex={3}>
           <Section>
             <Content>
@@ -234,8 +253,12 @@ export const HouseItem = () => {
             <Yandex />
           </div>
         </Container>
-        <Container style={{ alignItems: "start" }} className="user" flex={1}>
-          <Section style={{ justifyContent: "flex-start" }}>
+        <Container
+          style={{ alignItems: "start", width: "200px" }}
+          className="user"
+          flex={1}
+        >
+          <Section style={{ justifyContent: "start" }}>
             <User.Img src={nouser} alt="user image" />
             <Content>
               <div className="subTitle">Webbrain Academy</div>

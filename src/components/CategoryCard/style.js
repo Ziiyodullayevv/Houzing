@@ -22,11 +22,11 @@ const Blur = styled.div`
 const Container = styled.div`
   position: relative;
   overflow: hidden;
-  max-width: 280px;
-  min-width: 230px;
+  max-width: 240px;
+  min-width: 200px;
   border-radius: 4px;
-  max-height: 380px;
-  min-height: 350px;
+  max-height: 300px;
+  min-height: 250px;
   border: 1px solid #e6e9ec;
   background-color: white;
   transition: all 0.1s linear;

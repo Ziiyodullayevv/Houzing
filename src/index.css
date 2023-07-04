@@ -100,9 +100,15 @@ body {
 
 .slick-prev:before,
 .slick-next:before {
-  font-size: 30px !important;
   color: black;
-  position: relative;
-  left: -10px;
-  right: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+}
+
+.info-card {
+  text-align: start;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #696969;
 }

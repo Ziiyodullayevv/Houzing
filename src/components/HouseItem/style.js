@@ -6,6 +6,7 @@ import { ReactComponent as bath } from "../../assets/icons/bath.svg";
 import { ReactComponent as garage } from "../../assets/icons/car.svg";
 import { ReactComponent as ruler } from "../../assets/icons/ruler.svg";
 import { ReactComponent as resize } from "../../assets/icons/resize.svg";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -150,22 +151,21 @@ const ImageContainer = styled.div`
 `;
 
 const ImgContainer = styled.div`
+  max-width: 1440px;
+  padding: 0 130px;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 20px;
-  margin-left: 20px;
 `;
 
 ImageContainer.Main = styled.img`
-  width: 100%;
-  max-width: 580px;
-  max-height: 400px;
+  width: 550px;
+  height: 320px;
 `;
 ImageContainer.Subimg = styled.img`
   position: relative;
-  width: 100%;
-  max-width: 280px;
-  max-height: 190px;
+  width: 250px;
+  height: 150px;
 `;
 
 const Blur = styled.div`
