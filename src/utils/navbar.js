@@ -1,15 +1,13 @@
 import React from "react";
-import useUniqueId from "../hooks/useId";
 import { Slider } from "antd";
+import useUniqueId from "../hooks/useId";
 
 // pages:
 import SignInPage from "../pages/Register";
 import Favourite from "../pages/Favourite";
 import Signin from "../components/SignIn";
 import MyProfilePage from "../pages/MyPofile";
-import AddNewHouse from "../components/AddHouse";
-//____________________________________________________
-
+import AddNewHousePage from "../pages/AddHause";
 // React.lazy pages:
 const HomePage = React.lazy(() => import("../pages/Home"));
 const PropertiesPage = React.lazy(() => import("../pages/Properties"));
@@ -98,7 +96,15 @@ export const navbar = [
     id: useUniqueId,
     title: "Add New Hosue",
     path: "myprofile/newhouse",
-    element: <AddNewHouse />,
+    element: <AddNewHousePage />,
+    private: true,
+    hidden: true,
+  },
+  {
+    id: useUniqueId,
+    element: <AddNewHousePage />,
+    title: "Add New House",
+    path: "/myprofile/edithouse/:id",
     private: true,
     hidden: true,
   },
