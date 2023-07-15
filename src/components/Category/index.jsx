@@ -71,16 +71,22 @@ const Category = () => {
     prevArrow: <SamplePrevArrow />,
   };
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const token =
+    "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoiYWtvYmlyeml5b2QyMzIzQGdtYWlsLmNvbSIsImV4cCI6MTcwNjQ3NDc0MSwiaWF0IjoxNjg4NDc0NzQxLCJzY29wZSI6IlJPTEVfVVNFUiJ9.Z5EoWl9TPDmQe_NV0Y8PUzBiptuvtjnOx9aLcIXn-6rhflwjTxx0dF-JzZsh36P4yBcuRba7kTLt6L3a9RtS-dxPYBRL6Va0b2-c8aBr-1StieWesQZkScHQEAJcQBg1BVjA3azLC9yGjel4qTTos0dbc44ZtOwrddmhpMPzY5GiyaRfrSnAuX9MtDPzDsrOthvUxDe1sQkFW4UeHzCBziZ2U9NonUHOltJmNcXbUB0ebsc0_PI2heok7txaELuW49qoYofoVANwb7BXBZKenxIC7xutU7QhL6bG3PZVDAJxKZyoQXk66rBXYM_xAziOYlG_UP_UKsTOn-EZrC9unQ";
 
-  // const [data, setData] = useState([]);
-  // useEffect(() => {
-  //   fetch(`${url}/category/list`)
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setData(res?.data || []);
-  //     });
-  // }, []);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/v1/categories/list`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res?.data || []);
+      });
+  }, []);
 
   return (
     <Container className="container">
@@ -91,24 +97,14 @@ const Category = () => {
         </h4>
       </Content>
       <Slider {...settings}>
-        {/* {data.map((value) => {
+        {data.map((value) => {
           return (
             <CategoryCard
               onClick={() => navigate(`/properties?category_id${value?.id}`)}
               data={value}
             />
           );
-        })} */}
-
-        {/* bu qism olib tashlanadi */}
-        <CategoryCard />
-        <CategoryCard />
-        <CategoryCard />
-        <CategoryCard />
-        <CategoryCard />
-        <CategoryCard />
-        <CategoryCard />
-        <CategoryCard />
+        })}
       </Slider>
     </Container>
   );

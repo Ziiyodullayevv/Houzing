@@ -14,7 +14,6 @@ import {
   Details,
   Icons,
   ImageContainer,
-  ImgContainer,
   Section,
   User,
   Wrapper,
