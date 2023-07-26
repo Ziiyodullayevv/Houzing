@@ -94,6 +94,7 @@ const Category = () => {
         {data.map((value) => {
           return (
             <CategoryCard
+              key={value?.id}
               onClick={() => navigate(`/properties?category_id${value?.id}`)}
               data={value}
             />

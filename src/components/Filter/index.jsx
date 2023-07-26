@@ -140,10 +140,90 @@ export const Filter = () => {
         placeholder={"Enter an address, neighborhood, city, or ZIP code"}
       />
       <Dropdown
-        overlay={menu}
+        dropdownRender={() => {
+          return (
+            <MenuWrapper>
+              <h1 className="subTitle">Address</h1>
+              <Section>
+                <Input
+                  defaultValue={query.get("country")}
+                  onChange={onChange}
+                  ref={countryRef}
+                  name="country"
+                  placeholder="Country"
+                />
+                <Input
+                  onChange={onChange}
+                  defaultValue={query.get("region")}
+                  ref={regionRef}
+                  name="region"
+                  placeholder="Region"
+                />
+                <Input
+                  onChange={onChange}
+                  defaultValue={query.get("city")}
+                  ref={cityRef}
+                  name="address"
+                  placeholder="City"
+                />
+                <Input
+                  onChange={onChange}
+                  defaultValue={query.get("zip_code")}
+                  name="zip_code"
+                  ref={zipRef}
+                  placeholder="Zip Code"
+                />
+              </Section>
+              <h1 className="subTitle">Apartment info</h1>
+              <Section>
+                <Input
+                  name="room"
+                  onChange={onChange}
+                  ref={roomsRef}
+                  placeholder="Rooms"
+                />
+                <SelectAnt
+                  defaultValue={query.get("sort") || "Select Sort"}
+                  onChange={onChangeSort}
+                >
+                  <SelectAnt.Option value={""}>Select Sort</SelectAnt.Option>
+                  <SelectAnt.Option value={"asc"}>O'suvchi</SelectAnt.Option>
+                  <SelectAnt.Option value={"desc"}>Kamayuvchi</SelectAnt.Option>
+                </SelectAnt>
+
+                <SelectAnt value={value} onChange={onChangeCategory}>
+                  <SelectAnt.Option value={""}>
+                    Select Category
+                  </SelectAnt.Option>
+                  {data.map((value) => {
+                    return (
+                      <SelectAnt.Option key={value.id} value={value?.id}>
+                        {value?.name}
+                      </SelectAnt.Option>
+                    );
+                  })}
+                </SelectAnt>
+              </Section>
+              <h1 className="subTitle">Price</h1>
+              <Section>
+                <Input
+                  onChange={onChange}
+                  name="min_price"
+                  ref={minPriceRef}
+                  placeholder="Min price"
+                />
+                <Input
+                  onChange={onChange}
+                  name="max_price"
+                  ref={maxPriceRef}
+                  placeholder="Max price"
+                />
+              </Section>
+            </MenuWrapper>
+          );
+        }}
         placement="bottomRight"
-        arrow={{ pointAtCenter: true }}
-        trigger="click"
+        trigger={["click"]}
       >
         <div>
           <Button type="light">
