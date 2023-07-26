@@ -17,7 +17,7 @@ export const navbar = [
   {
     id: useUniqueId,
     title: "Home",
-    path: "/home",
+    path: "/",
     element: (
       <React.Suspense
         fallback={

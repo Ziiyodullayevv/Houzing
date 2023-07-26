@@ -28,6 +28,11 @@ const Navbar = () => {
   };
   return (
     <>
+      <div className="modal-card">
+        <div className="modal-title">
+          Hozircha faqat desktop versiyasi mavjud
+        </div>
+      </div>
       <Header>
         <Main className="container">
           <Wrapper>

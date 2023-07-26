@@ -4,7 +4,6 @@ import RootContext from "./context";
 import "./index.css";
 import Root from "./root/Root";
 
-import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

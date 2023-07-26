@@ -112,3 +112,9 @@ body {
   font-size: 14px;
   color: #696969;
 }
+
+@media only screen and (max-widht: 1200px) {
+  .modal-card {
+    background-color: red;
+  }
+}

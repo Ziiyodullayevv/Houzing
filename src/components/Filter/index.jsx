@@ -1,175 +1,160 @@
-import React, { useRef, useState, useEffect } from "react";
-import { Input, Button } from "../Generic";
-import {
-  Container,
-  Icons,
-  MenuWrapper,
-  Section,
-  SelectAntd,
-  Wrapper,
-} from "./style";
 import { Dropdown } from "antd";
-import { replace } from "../../hooks/useReplace";
+import React, { useEffect, useRef, useState } from "react";
+import { Input, Button } from "../Generic";
+import { Container, Icons, MenuWrapper, Section, SelectAnt } from "./style";
+import { uzeReplace } from "../../hooks/uzeReplace";
 import { useNavigate, useLocation } from "react-router-dom";
 import useSearch from "../../hooks/useSearch";
 
-const Filter = () => {
-  //paths:
-  const { REACT_APP_BASE_URL: url } = process.env; // env faylida yashirilgan url olish uchun
-  const navigate = useNavigate();
-  const location = useLocation();
-  const query = useSearch();
+export const Filter = () => {
   const [data, setData] = useState([]);
-  const [filter, setFilter] = useState("All");
-  // console.log(query.get("region"), "params")
+  const [value, setValue] = useState("Select Category");
 
-  // selectni map qilish uchun:
-  // useEffect(() => {
-  //   fetch(`${url}/category/list`)
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setData(res?.data || []);
-  //       // eslint-disable-next-line react-hooks/exhaustive-deps
-  //     });
-  // }, []);
+  const { REACT_APP_BASE_URL: url } = process.env;
+  const location = useLocation();
+  const navigate = useNavigate();
+  const query = useSearch();
 
-  // selectga name biriktirish uchun:
-  // useEffect(() => {
-  //   let [select] = data?.fitler(
-  //     (category) => category.id === Number(query.get("category_id"))
-  //   );
-  //   select?.name && setFilter(select?.name);
-  //   !query.get("category_id") && setFilter("Select Category");
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [location?.search, data]);
-
-  // // categories filter:
-  // const categoriesFilter = (category_id) => {
-  //   navigate(`/properties/${replace("category_id", category_id)}`);
-  // };
-
-  // // sort filter:
-  // const sortFilter = (sort) => {
-  //   navigate(`/properties/${replace("sort", sort)}`);
-  // };
-
-  //refs:
   const countryRef = useRef();
   const regionRef = useRef();
   const cityRef = useRef();
   const zipRef = useRef();
-  const roomRef = useRef();
-  const minRef = useRef();
-  const maxRef = useRef();
+
+  const roomsRef = useRef();
+
+  const minPriceRef = useRef();
+  const maxPriceRef = useRef();
 
   const onChange = ({ target: { name, value } }) => {
-    navigate(`${location.pathname}${replace(name, value)}`);
+    navigate(`${location?.pathname}${uzeReplace(name, value)}`);
   };
 
-  return (
-    <Container className="container">
-      <Wrapper>
+  useEffect(() => {
+    fetch(`${url}/categories/list`)
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res?.data || []);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    let [d] = data?.filter(
+      (ctg) => ctg.id === Number(query.get("category_id"))
+    );
+    d?.name && setValue(d?.name);
+    !query.get("category_id") && setValue("Select Category");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location?.search, data]);
+
+  const onChangeCategory = (category_id) => {
+    navigate(`/properties${uzeReplace("category_id", category_id)}`);
+  };
+  const onChangeSort = (sort) => {
+    navigate(`/properties${uzeReplace("sort", sort)}`);
+  };
+
+  const menu = (
+    <MenuWrapper>
+      <h1 className="subTitle">Address</h1>
+      <Section>
         <Input
-          icon={<Icons.Houses />}
-          placeholder={"Enter an adress, neighborhood, city, or ZIP code"}
+          defaultValue={query.get("country")}
+          onChange={onChange}
+          ref={countryRef}
+          name="country"
+          placeholder="Country"
         />
-        <Dropdown
-          dropdownRender={() => {
-            return (
-              <MenuWrapper style={{ marginTop: "10px" }}>
-                <h2 className="subTitle">Address</h2>
-                <Section>
-                  <Input
-                    onChange={onChange}
-                    defaultValue={query.get("country")}
-                    ref={countryRef}
-                    name={"country"}
-                    placeholder={"Country"}
-                  />
-                  <Input
-                    onChange={onChange}
-                    ref={regionRef}
-                    name={"region"}
-                    defaultValue={query.get("region")}
-                    placeholder={"Region"}
-                  />
-                  <Input
-                    onChange={onChange}
-                    ref={cityRef}
-                    defaultValue={query.get("address")}
-                    name="address"
-                    placeholder={"Address"}
-                  />
-                  <Input
-                    onChange={onChange}
-                    ref={zipRef}
-                    defaultValue={query.get("zip_code")}
-                    name="zip_code"
-                    placeholder={"Zip code"}
-                  />
-                </Section>
-                <h2 className="subTitle">Appartment Info</h2>
-                <Section>
-                  <Input ref={roomRef} placeholder={"Room"} />
-
-                  <SelectAntd defaultValue={"Select Sort"}>
-                    <SelectAntd.Option value={""}>DeSelect</SelectAntd.Option>
-                    <SelectAntd.Option value={"asc"}>Osuvchi</SelectAntd.Option>
-                    <SelectAntd.Option value={"desc"}>
-                      Kamayuvchi
-                    </SelectAntd.Option>
-                  </SelectAntd>
-
-                  {/* Select orqali categorydagi malumotlar chiqarildi: */}
-                  <SelectAntd value={filter}>
-                    <SelectAntd.Option value={""}>Default</SelectAntd.Option>
-                    {/* {data.map((value) => {
-                      return (
-                        <SelectAntd.Option onChange={categoriesFilter} value={value?.id || "Test"}>
-                          {value?.name || "Category"}
-                        </SelectAntd.Option>
-                      );
-                    })} */}
-                    <SelectAntd.Option value={"Hello"}>hello</SelectAntd.Option>
-                    <SelectAntd.Option value={"Hello"}>hello</SelectAntd.Option>
-                    <SelectAntd.Option value={"Hello"}>hello</SelectAntd.Option>
-                  </SelectAntd>
-                </Section>
-
-                <h2 className="subTitle">Price</h2>
-                <Section style={{ marginBottom: "10px" }}>
-                  <Input
-                    onChange={onChange}
-                    ref={minRef}
-                    name="min_price"
-                    placeholder={"Min price"}
-                  />
-                  <Input
-                    onChange={onChange}
-                    ref={maxRef}
-                    name="max_price"
-                    placeholder={"Max price"}
-                  />
-                </Section>
-              </MenuWrapper>
-            );
-          }}
-          placement="bottomRight"
-          trigger={["click"]}
+        <Input
+          onChange={onChange}
+          defaultValue={query.get("region")}
+          ref={regionRef}
+          name="region"
+          placeholder="Region"
+        />
+        <Input
+          onChange={onChange}
+          defaultValue={query.get("city")}
+          ref={cityRef}
+          name="address"
+          placeholder="City"
+        />
+        <Input
+          onChange={onChange}
+          defaultValue={query.get("zip_code")}
+          name="zip_code"
+          ref={zipRef}
+          placeholder="Zip Code"
+        />
+      </Section>
+      <h1 className="subTitle">Apartment info</h1>
+      <Section>
+        <Input
+          name="room"
+          onChange={onChange}
+          ref={roomsRef}
+          placeholder="Rooms"
+        />
+        <SelectAnt
+          defaultValue={query.get("sort") || "Select Sort"}
+          onChange={onChangeSort}
         >
-          <div>
-            {" "}
-            <Button type={"light"}>
-              <Icons.Setting />
-              Advenced
-            </Button>
-          </div>
-        </Dropdown>
-        <Button width={200}>
-          <Icons.Search />
-          Search
-        </Button>
-      </Wrapper>
+          <SelectAnt.Option value={""}>Select Sort</SelectAnt.Option>
+          <SelectAnt.Option value={"asc"}>O'suvchi</SelectAnt.Option>
+          <SelectAnt.Option value={"desc"}>Kamayuvchi</SelectAnt.Option>
+        </SelectAnt>
+
+        <SelectAnt value={value} onChange={onChangeCategory}>
+          <SelectAnt.Option value={""}>Select Category</SelectAnt.Option>
+          {data.map((value) => {
+            return (
+              <SelectAnt.Option key={value.id} value={value?.id}>
+                {value?.name}
+              </SelectAnt.Option>
+            );
+          })}
+        </SelectAnt>
+      </Section>
+      <h1 className="subTitle">Price</h1>
+      <Section>
+        <Input
+          onChange={onChange}
+          name="min_price"
+          ref={minPriceRef}
+          placeholder="Min price"
+        />
+        <Input
+          onChange={onChange}
+          name="max_price"
+          ref={maxPriceRef}
+          placeholder="Max price"
+        />
+      </Section>
+    </MenuWrapper>
+  );
+
+  return (
+    <Container>
+      <Input
+        icon={<Icons.Houses />}
+        placeholder={"Enter an address, neighborhood, city, or ZIP code"}
+      />
+      <Dropdown
+        overlay={menu}
+        placement="bottomRight"
+        arrow={{ pointAtCenter: true }}
+        trigger="click"
+      >
+        <div>
+          <Button type="light">
+            <Icons.Filter /> Advanced
+          </Button>
+        </div>
+      </Dropdown>
+
+      <Button>
+        <Icons.Search /> Search
+      </Button>
     </Container>
   );
 };

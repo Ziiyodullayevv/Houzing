@@ -1,23 +1,26 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { ReactComponent as houses } from "../../assets/icons/houses.svg";
-import { ReactComponent as setting } from "../../assets/icons/setting.svg";
+import { ReactComponent as filter } from "../../assets/icons/setting.svg";
 import { ReactComponent as search } from "../../assets/icons/search.svg";
 import { Select } from "antd";
 
-const Container = styled.div``;
-
-const Wrapper = styled.div`
+const Container = styled.div`
   display: flex;
-  gap: 20px;
+  padding: var(--padding);
   padding-top: 10px;
   padding-bottom: 10px;
+  gap: 20px;
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
 `;
 
 const Icons = styled.div``;
+
 Icons.Search = styled(search)`
   margin-right: 8px;
 `;
-Icons.Setting = styled(setting)`
+Icons.Filter = styled(filter)`
   margin-right: 8px;
 `;
 Icons.Houses = styled(houses)`
@@ -25,37 +28,28 @@ Icons.Houses = styled(houses)`
 `;
 
 const MenuWrapper = styled.div`
-  padding: 20px;
+  padding: 30px;
   background: white;
-  border: 1px solid gray;
-  border-radius: 4px;
+  border: 1px solid #e6e9ec;
 `;
-
 const Section = styled.div`
   display: flex;
   justify-content: start;
-  gap: 1rem;
-  margin-top: 10px;
+  gap: 20px;
   margin-bottom: 20px;
 `;
 
-const SelectAntd = styled(Select)`
-  max-width: 180px;
+const SelectAnt = styled(Select)`
+  min-width: 200px;
   width: 100%;
-  min-width: 130px;
-  &:where(.css-dev-only-do-not-override-12jzuas).ant-select-single:not(
-      .ant-select-customize-input
-    )
-    .ant-select-selector {
+  max-width: 200px;
+  .ant-select-selector {
     height: 44px !important;
-    border-radius: 2px;
-    line-height: 41px !important;
   }
-  &:where(.css-dev-only-do-not-override-12jzuas).ant-select-single
-    .ant-select-selector
-    .ant-select-selection-item {
-    line-height: 41px;
+  .ant-select-selection-item {
+    display: flex !important;
+    align-items: center !important;
   }
 `;
 
-export { Container, Wrapper, Icons, MenuWrapper, Section, SelectAntd };
+export { Container, Icons, MenuWrapper, Section, SelectAnt };

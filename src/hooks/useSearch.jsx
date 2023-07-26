@@ -1,7 +1,7 @@
-// import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export const useSearch = () => {
-  const { search } = window.location;
+  const { search } = useLocation();
   return new URLSearchParams(search);
 };
 
